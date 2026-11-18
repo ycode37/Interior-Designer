@@ -1,19 +1,19 @@
-# Maison Aurelle — Website Design Demo
+# Payal Jain — Website Design Demo
 
 A single-file demonstration website for a fictional luxury interior design studio, built to show an interior designer what their own site could look like.
 
-> **Note:** Maison Aurelle is a fictional brand. All projects are concept projects, not real client work. The site contains no testimonials, ratings, awards, or client logos.
+> **Note:** Payal Jain is a fictional brand. All projects are concept projects, not real client work. The site contains no testimonials, ratings, awards, or client logos.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
-| `maison-aurelle.html` | The complete website (HTML, CSS, and JavaScript in one file) |
+| `Payal-Jain.html` | The complete website (HTML, CSS, and JavaScript in one file) |
 | `README.md` | This guide |
 
 ## Quick start
 
-1. Download `maison-aurelle.html`.
+1. Download `Payal-Jain.html`.
 2. Open it in any modern browser (Chrome, Edge, Firefox, Safari).
 3. An internet connection is needed for the Tailwind CDN, Google Fonts, and Unsplash images.
 
@@ -80,4 +80,4 @@ Business hours, address, email, and phone are in the `<footer>`. The brand name 
 
 ## Credits
 
-Photography from [Unsplash](https://unsplash.com) under the Unsplash License. The Maison Aurelle name, wordmark, and mark are original to this demo.
+Photography from [Unsplash](https://unsplash.com) under the Unsplash License. The Payal Jain name, wordmark, and mark are original to this demo.
