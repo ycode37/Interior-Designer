@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payal Jain — Interiors shaped by light, material, and intention</title>
+<meta name="description" content="Payal Jain is a Mumbai interior design studio creating warm, functional, and enduring interiors. Website design demonstration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{ivory:'#F6F1EA',char:'#171512',clay:'#A96F55',clayd:'#8A5640',olive:'#6E7355',stone:'#D9D2C7'},fontFamily:{serif:['"Cormorant Garamond"','Georgia','serif'],sans:['Manrope','Inter','system-ui','sans-serif']}}}}
+</script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:#F6F1EA;color:#171512;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+:focus-visible{outline:2px solid #8A5640;outline-offset:3px;border-radius:2px}
+.dark :focus-visible{outline-color:#D9D2C7}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.hair{border-color:rgba(23,21,18,.18)}
+.imgbg{background:#D9D2C7}
+/* nav */
+#nav{background:rgba(246,241,234,.55);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+#nav.solid{background:rgba(246,241,234,.96);border-color:rgba(23,21,18,.15)}
+.lnk{position:relative;padding:.25rem 0}
+.lnk::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:#8A5640;transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.lnk:hover::after{transform:scaleX(1)}
+#mnav{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+#mnav.open{grid-template-rows:1fr}
+#mnav>div{overflow:hidden}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1.7rem;font-size:.9rem;font-weight:600;letter-spacing:.02em;border:1px solid #171512;transition:background .3s,color .3s,transform .3s}
+.btn-p{background:#171512;color:#F6F1EA}.btn-p:hover{background:#8A5640;border-color:#8A5640}
+.btn-s{color:#171512}.btn-s:hover{background:#171512;color:#F6F1EA}
+.btn:active{transform:translateY(1px)}
+/* hero */
+.line{display:block;overflow:hidden}
+.line>span{display:block;transform:translateY(105%);opacity:0;animation:rise 1.1s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{transform:none;opacity:1}}
+.heroimg{clip-path:inset(0 0 100% 0);animation:reveal 1.5s .25s cubic-bezier(.7,0,.2,1) forwards}
+@keyframes reveal{to{clip-path:inset(0)}}
+.fadein{opacity:0;animation:fi 1s 1.1s forwards}@keyframes fi{to{opacity:1}}
+.scrollline{width:1px;height:44px;background:rgba(23,21,18,.25);position:relative;overflow:hidden}
+.scrollline::after{content:"";position:absolute;left:0;top:-100%;width:1px;height:100%;background:#8A5640;animation:sl 2.2s ease-in-out infinite}
+@keyframes sl{to{top:100%}}
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.imgrv{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.7,0,.2,1)}
+.imgrv.in{clip-path:inset(0)}
+/* about image */
+.zoom{overflow:hidden;transition:box-shadow .5s}
+.zoom img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.zoom:hover{box-shadow:0 30px 60px -25px rgba(23,21,18,.45)}
+.zoom:hover img{transform:scale(1.04)}
+/* service cards */
+.card{border:1px solid rgba(23,21,18,.18);background:#F6F1EA;transition:transform .45s,border-color .45s,box-shadow .45s,background .45s}
+.card:hover,.card:focus-within{transform:translateY(-8px);border-color:#A96F55;background:#EFE8DD;box-shadow:0 0 0 1px #A96F55,0 22px 50px -22px rgba(169,111,85,.6)}
+.card svg .a{transform-box:fill-box;transform-origin:center;transition:transform .8s ease}
+.card:hover svg .a,.card:focus-within svg .a{transform:rotate(12deg) scale(1.08)}
+.card svg .b{transition:transform .8s ease}
+.card:hover svg .b,.card:focus-within svg .b{transform:translateY(-3px)}
+/* gallery */
+.tab{padding:.55rem 1.1rem;border:1px solid rgba(23,21,18,.25);font-size:.85rem;font-weight:500;transition:all .3s}
+.tab:hover{border-color:#8A5640;color:#8A5640}
+.tab[aria-pressed=true]{background:#171512;color:#F6F1EA;border-color:#171512}
+.proj{transition:opacity .45s,transform .45s}
+.proj.out{opacity:0;transform:scale(.96)}
+.proj.gone{display:none}
+.proj img{transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.proj:hover img{transform:scale(1.05)}
+.proj .cap{background:linear-gradient(to top,rgba(23,21,18,.88),rgba(23,21,18,0));}
+/* modal */
+#modal{opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+#modal.open{opacity:1;visibility:visible}
+#modal .box{transform:translateY(24px);transition:transform .45s}
+#modal.open .box{transform:none}
+/* stepper */
+.track{position:absolute;background:rgba(23,21,18,.2)}
+.fill{position:absolute;background:#A96F55;transition:width .6s ease,height .6s ease}
+.step[aria-selected=true] .num{background:#8A5640;color:#F6F1EA;border-color:#8A5640;box-shadow:0 0 0 6px rgba(169,111,85,.2)}
+.step[aria-selected=true] .st{border-color:#8A5640}
+.step .num{transition:all .4s}
+.panel{animation:pin .6s ease}
+@keyframes pin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* form */
+.fld{position:relative}
+.fld input,.fld select,.fld textarea{width:100%;background:transparent;border:1px solid rgba(246,241,234,.45);color:#F6F1EA;padding:1.5rem 1rem .6rem;font-size:1rem;transition:border-color .3s,box-shadow .3s;border-radius:0}
+.fld select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23F6F1EA' stroke-width='1.5'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.fld select option{color:#171512}
+.fld label{position:absolute;left:1rem;top:1.05rem;color:#D9D2C7;font-size:1rem;pointer-events:none;transition:all .25s;transform-origin:left}
+.fld input:focus+label,.fld input:not(:placeholder-shown)+label,.fld textarea:focus+label,.fld textarea:not(:placeholder-shown)+label,.fld select:focus+label,.fld select.has+label{top:.4rem;font-size:.72rem}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:#F6F1EA;box-shadow:0 0 0 3px rgba(217,210,199,.35)}
+.fld.bad input,.fld.bad select,.fld.bad textarea{border-color:#F2B5A0}
+.err{color:#F6C9B8;font-size:.82rem;margin-top:.4rem;display:none}
+.fld.bad .err{display:block}
+.flink{transition:color .3s,padding-left .3s}.flink:hover{color:#fff;padding-left:6px}
+@media (prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+ .line>span{transform:none;opacity:1}.heroimg,.imgrv{clip-path:none}.rv{opacity:1;transform:none}.fadein{opacity:1}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[80] focus:bg-char focus:text-ivory focus:px-4 focus:py-2">Skip to content</a>
+
+<header id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 md:px-10 h-[68px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3" aria-label="Payal Jain home">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#171512" stroke-width="1.2" aria-hidden="true"><path d="M4 28V14a12 12 0 0 1 24 0v14"/><path d="M10 28V15a6 6 0 0 1 12 0v13" stroke="#8A5640"/><path d="M2 28h28"/></svg>
+      <span class="serif text-2xl font-medium tracking-wide">Payal Jain</span>
+    </a>
+    <nav aria-label="Primary" class="hidden md:flex gap-9 text-sm font-medium">
+      <a class="lnk" href="#about">About</a><a class="lnk" href="#services">Services</a><a class="lnk" href="#projects">Projects</a><a class="lnk" href="#process">Process</a><a class="lnk" href="#enquiry">Enquiry</a>
+    </nav>
+    <button id="burger" class="md:hidden p-2 -mr-2" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
+      <svg width="26" height="26" viewBox="0 0 26 26" stroke="#171512" stroke-width="1.5" fill="none" aria-hidden="true"><path id="bl" d="M3 8h20M3 18h20"/></svg>
+    </button>
+  </div>
+  <div id="mnav" class="md:hidden bg-ivory"><div><nav aria-label="Mobile" class="px-5 pb-6 flex flex-col text-lg serif">
+    <a class="py-3 border-t hair" href="#about">About</a><a class="py-3 border-t hair" href="#services">Services</a><a class="py-3 border-t hair" href="#projects">Projects</a><a class="py-3 border-t hair" href="#process">Process</a><a class="py-3 border-t hair" href="#enquiry">Enquiry</a>
+  </nav></div></div>
+</header>
+
+<main id="main">
+<!-- 1 HERO -->
+<section id="top" class="min-h-screen grid lg:grid-cols-12 pt-[68px]">
+  <div class="lg:col-span-7 flex flex-col justify-center px-5 md:px-10 lg:pl-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] lg:pr-16 py-14 lg:py-0 order-2 lg:order-1">
+    <p class="fadein text-sm text-olive font-semibold mb-8">Interior design studio, Mumbai</p>
+    <h1 class="serif font-medium leading-[.95] text-[clamp(3.4rem,8.5vw,8rem)] tracking-tight" aria-label="Rooms that feel considered.">
+      <span class="line"><span style="animation-delay:.2s">Rooms</span></span>
+      <span class="line"><span style="animation-delay:.38s">that feel</span></span>
+      <span class="line"><span style="animation-delay:.56s" class="italic text-clayd">considered.</span></span>
+    </h1>
+    <p class="fadein mt-9 max-w-md text-lg leading-relaxed text-char/80">Payal Jain creates warm, functional, and enduring interiors for homes, hospitality spaces, and commercial environments.</p>
+    <div class="fadein mt-10 flex flex-wrap gap-4">
+      <a href="#enquiry" class="btn btn-p">Start a Project</a>
+      <a href="#projects" class="btn btn-s">View Our Work</a>
+    </div>
+    <div class="fadein mt-14 hidden sm:flex items-center gap-4 text-sm text-char/75"><span class="scrollline" aria-hidden="true"></span>Scroll to explore</div>
+  </div>
+  <div class="lg:col-span-5 order-1 lg:order-2 relative min-h-[60vh] lg:min-h-0 overflow-hidden imgbg">
+    <div class="heroimg absolute inset-0"><img id="heroimg" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80" alt="Sunlit living room with a linen sofa, oak table, and warm neutral walls" class="absolute w-full h-[118%] -top-[9%] object-cover" fetchpriority="high"></div>
+  </div>
+</section>
+
+<!-- 2 ABOUT -->
+<section id="about" class="py-24 md:py-40 px-5 md:px-10">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-14 lg:gap-20 items-center">
+    <div class="lg:col-span-7">
+      <h2 class="rv serif text-4xl md:text-6xl leading-[1.05] font-medium">We design for the way you actually live, not for the way a season says you should.</h2>
+      <p class="rv mt-8 max-w-xl text-lg leading-relaxed text-char/80">Our practice rests on careful spatial planning, honest materials, and the patient study of natural light. Every joint, junction, and finish is drawn and reviewed by hand. The result is an interior that feels personal and calm, built to age well rather than follow a trend.</p>
+      <dl class="rv mt-14 grid sm:grid-cols-3 gap-8 border-t hair pt-8">
+        <div><dt class="sr-only">Studio capability</dt><dd class="serif text-3xl leading-tight">12+ Years of Design Practice</dd></div>
+        <div><dt class="sr-only">Studio capability</dt><dd class="serif text-3xl leading-tight">Residential, Hospitality &amp; Commercial</dd></div>
+        <div><dt class="sr-only">Studio capability</dt><dd class="serif text-3xl leading-tight">Concept to Handover</dd></div>
+      </dl>
+      <p class="rv mt-6 text-sm text-olive font-medium">Studio capabilities</p>
+    </div>
+    <figure class="lg:col-span-5 rv">
+      <div class="zoom imgbg aspect-[4/5] imgrv"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80" alt="Detail of warm timber, brushed brass fittings, and natural stone in a styled interior" loading="lazy" class="w-full h-full object-cover contrast-[1.08] saturate-[.9]"></div>
+      <figcaption class="mt-4 text-sm text-char/75 border-t hair pt-3">Material study — warm timber, brushed brass, and natural stone.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 3 SERVICES -->
+<section id="services" class="py-24 md:py-32 px-5 md:px-10 bg-stone/50 border-y hair">
+  <div class="max-w-7xl mx-auto">
+    <div class="rv max-w-2xl mb-14"><h2 class="serif text-4xl md:text-6xl font-medium leading-none">Three ways we work</h2><p class="mt-5 text-char/80 text-lg">Each engagement is scoped around the space and the people who use it.</p></div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="card rv p-8 md:p-10" tabindex="0" aria-labelledby="s1">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#8A5640" stroke-width="1.5" aria-hidden="true"><path class="b" d="M8 26 28 9l20 17"/><path d="M13 23v24h30V23"/><rect class="a" x="23" y="32" width="10" height="15"/></svg>
+        <h3 id="s1" class="serif text-3xl mt-7">Residential Interiors</h3>
+        <ul class="mt-6 space-y-3 text-char/85 border-t hair pt-6"><li>Full-home concept development</li><li>Space planning and layouts</li><li>Custom furniture direction</li><li>Lighting and material palettes</li></ul>
+      </article>
+      <article class="card rv p-8 md:p-10" tabindex="0" aria-labelledby="s2">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#8A5640" stroke-width="1.5" aria-hidden="true"><rect x="10" y="8" width="36" height="40"/><g class="b"><path d="M18 17h6M32 17h6M18 26h6M32 26h6"/></g><path class="a" d="M24 48V38h8v10"/></svg>
+        <h3 id="s2" class="serif text-3xl mt-7">Commercial Spaces</h3>
+        <ul class="mt-6 space-y-3 text-char/85 border-t hair pt-6"><li>Hospitality and workplace interiors</li><li>Brand-led spatial concepts</li><li>Furniture and finish selection</li><li>Detailed execution drawings</li></ul>
+      </article>
+      <article class="card rv p-8 md:p-10 md:col-span-2 lg:col-span-1" tabindex="0" aria-labelledby="s3">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#8A5640" stroke-width="1.5" aria-hidden="true"><path class="b" d="M20 8h16l-3 14H23z"/><path d="M28 22v22M20 46h16"/><circle class="a" cx="42" cy="14" r="4"/></svg>
+        <h3 id="s3" class="serif text-3xl mt-7">Styling &amp; Renovation</h3>
+        <ul class="mt-6 space-y-3 text-char/85 border-t hair pt-6"><li>Room refresh and styling</li><li>Colour, texture, and artwork curation</li><li>Furniture sourcing direction</li><li>Renovation coordination support</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4 GALLERY -->
+<section id="projects" class="py-24 md:py-40 px-5 md:px-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="rv flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div><h2 class="serif text-4xl md:text-6xl font-medium leading-none">Concept projects</h2><p class="mt-5 max-w-lg text-char/80 text-lg">Studio demonstrations that show our approach. These are concept projects, not completed client work.</p></div>
+    </div>
+    <div id="tabs" class="rv flex flex-wrap gap-2 mb-10" role="group" aria-label="Filter projects by category"></div>
+    <p id="count" class="sr-only" aria-live="polite"></p>
+    <ul id="grid" class="grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-5 md:auto-rows-[190px] list-none p-0"></ul>
+  </div>
+</section>
+
+<!-- 5 PROCESS -->
+<section id="process" class="py-24 md:py-32 px-5 md:px-10 bg-stone/50 border-y hair">
+  <div class="max-w-7xl mx-auto">
+    <div class="rv max-w-2xl mb-16"><h2 class="serif text-4xl md:text-6xl font-medium leading-none">How a project unfolds</h2></div>
+    <div class="relative" role="tablist" aria-label="Working process">
+      <div id="steps" class="relative grid md:grid-cols-4 gap-0 md:gap-6">
+        <div class="track left-[23px] top-0 w-px h-full md:left-0 md:top-[23px] md:w-full md:h-px" aria-hidden="true"></div>
+        <div id="fill" class="fill left-[23px] top-0 w-px md:left-0 md:top-[23px] md:h-px" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div id="panel" class="panel mt-10 md:mt-14 border-t hair pt-8 grid md:grid-cols-12 gap-6" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- 6 ENQUIRY -->
+<section id="enquiry" class="dark bg-char text-ivory py-24 md:py-40 px-5 md:px-10">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-14">
+    <div class="lg:col-span-5 rv">
+      <h2 class="serif text-5xl md:text-7xl leading-[.98] font-medium">Let’s shape your next space.</h2>
+      <p class="mt-8 text-lg text-stone max-w-md leading-relaxed">Tell us about the space and how you want it to feel. Your message opens in WhatsApp, ready to send.</p>
+      <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="mt-10 inline-flex items-center gap-3 border border-ivory px-7 py-4 font-semibold hover:bg-ivory hover:text-char transition-colors">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.5-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 1.900c.1.200.1.400 0 .600l-.4.600c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.400.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.700-.1l1.800.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400Z"/></svg>
+        Chat on WhatsApp</a>
+    </div>
+    <form id="form" class="lg:col-span-7 rv space-y-5" novalidate>
+      <div class="fld"><input id="name" name="name" type="text" placeholder=" " autocomplete="name" required aria-describedby="e1"><label for="name">Full Name</label><p id="e1" class="err" role="alert">Please enter your name so we know who to reply to.</p></div>
+      <div class="fld"><select id="service" name="service" required aria-describedby="e2"><option value="" hidden></option><option>Residential Interiors</option><option>Commercial Spaces</option><option>Styling &amp; Renovation</option><option>Something Else</option></select><label for="service">Service</label><p id="e2" class="err" role="alert">Please choose the service closest to your project.</p></div>
+      <div class="fld"><textarea id="brief" name="brief" rows="5" placeholder=" " required aria-describedby="e3"></textarea><label for="brief">Project Brief</label><p id="e3" class="err" role="alert">Please share a few lines about your space and goals.</p></div>
+      <div class="flex flex-wrap items-center gap-5 pt-2">
+        <button type="submit" class="btn bg-ivory text-char border-ivory hover:bg-clay hover:border-clay hover:text-char">Send via WhatsApp</button>
+        <p class="text-sm text-stone">No obligation. We’ll respond during studio hours.</p>
+      </div>
+      <p id="ok" class="hidden border border-stone/50 p-4 text-ivory" role="status" tabindex="-1">Your WhatsApp enquiry is ready. A new tab should open shortly.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- 7 FOOTER -->
+<footer class="dark bg-char text-stone border-t border-ivory/20 px-5 md:px-10 pt-16 pb-10">
+  <div class="max-w-7xl mx-auto grid gap-12 md:grid-cols-2 lg:grid-cols-12">
+    <div class="lg:col-span-4">
+      <a href="#top" class="flex items-center gap-3 text-ivory" aria-label="Payal Jain home">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#F6F1EA" stroke-width="1.2" aria-hidden="true"><path d="M4 28V14a12 12 0 0 1 24 0v14"/><path d="M10 28V15a6 6 0 0 1 12 0v13" stroke="#D9A58C"/><path d="M2 28h28"/></svg>
+        <span class="serif text-3xl">Payal Jain</span></a>
+      <p class="mt-5 max-w-xs leading-relaxed">An interior design studio in Mumbai shaping warm, functional spaces through light, material, and intention.</p>
+    </div>
+    <nav class="lg:col-span-2" aria-label="Footer"><h2 class="text-ivory font-semibold mb-4">Explore</h2>
+      <ul class="space-y-2"><li><a class="flink" href="#about">About</a></li><li><a class="flink" href="#services">Services</a></li><li><a class="flink" href="#projects">Projects</a></li><li><a class="flink" href="#process">Process</a></li><li><a class="flink" href="#enquiry">Enquiry</a></li></ul></nav>
+    <div class="lg:col-span-3"><h2 class="text-ivory font-semibold mb-4">Studio hours</h2>
+      <ul class="space-y-2"><li>Monday–Friday: 10:00 AM–6:00 PM</li><li>Saturday: By appointment</li><li>Sunday: Closed</li></ul></div>
+    <address class="lg:col-span-3 not-italic"><h2 class="text-ivory font-semibold mb-4">Visit &amp; contact</h2>
+      <p class="leading-relaxed">Payal Jain Studio<br>24 Rosewood Lane, Bandra West<br>Mumbai, Maharashtra 400050, India</p>
+      <p class="mt-4"><a class="flink" href="mailto:hello@maisonaurelle.com">hello@maisonaurelle.com</a><br><a class="flink" href="tel:+919999999999">+91 99999 99999</a></p></address>
+  </div>
+  <div class="max-w-7xl mx-auto mt-14 pt-6 border-t border-ivory/20 text-sm flex flex-wrap justify-between gap-3"><p>© 2026 Payal Jain. All rights reserved.</p><p>Website design demonstration. Fictional studio.</p></div>
+</footer>
+
+<!-- MODAL -->
+<div id="modal" class="fixed inset-0 z-[70] flex items-center justify-center p-3 md:p-8 bg-char/80" role="dialog" aria-modal="true" aria-labelledby="m-title" aria-hidden="true">
+  <div class="box bg-ivory w-full max-w-6xl max-h-full overflow-y-auto grid md:grid-cols-2 relative">
+    <button id="mclose" class="absolute top-3 right-3 z-10 w-11 h-11 bg-ivory border hair flex items-center justify-center hover:bg-stone" aria-label="Close project details"><svg width="18" height="18" viewBox="0 0 18 18" stroke="#171512" stroke-width="1.5" aria-hidden="true"><path d="M2 2l14 14M16 2 2 16"/></svg></button>
+    <div class="imgbg min-h-[260px] md:min-h-[560px]"><img id="m-img" src="" alt="" class="w-full h-full object-cover"></div>
+    <div class="p-7 md:p-12">
+      <p id="m-cat" class="text-sm font-semibold text-olive"></p>
+      <h3 id="m-title" class="serif text-4xl md:text-5xl mt-2 leading-none"></h3>
+      <p class="text-sm text-char/70 mt-2">Concept project — studio demonstration</p>
+      <dl class="mt-8 space-y-6">
+        <div><dt class="font-semibold">Project brief</dt><dd id="m-brief" class="mt-1 text-char/85 leading-relaxed"></dd></div>
+        <div><dt class="font-semibold">Design approach</dt><dd id="m-app" class="mt-1 text-char/85 leading-relaxed"></dd></div>
+        <div><dt class="font-semibold">Materials palette</dt><dd id="m-mat" class="mt-2 flex flex-wrap gap-2"></dd></div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var U='https://images.unsplash.com/';
+/* nav */
+var nav=$('#nav'),bg=$('#burger'),mn=$('#mnav');
+function sc(){nav.classList.toggle('solid',scrollY>30)}addEventListener('scroll',sc,{passive:true});sc();
+function tog(o){mn.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Close menu':'Open menu');$('#bl').setAttribute('d',o?'M4 4l18 18M22 4 4 22':'M3 8h20M3 18h20');if(o)nav.classList.add('solid');else sc()}
+bg.onclick=function(){tog(!mn.classList.contains('open'))};
+$$('#mnav a').forEach(function(a){a.onclick=function(){tog(false)}});
+/* parallax */
+var hi=$('#heroimg');
+if(!reduce&&matchMedia('(min-width:1024px)').matches){var t=false;addEventListener('scroll',function(){if(t)return;t=true;requestAnimationFrame(function(){if(scrollY<innerHeight*1.2)hi.style.transform='translateY('+(scrollY*.08)+'px)';t=false})},{passive:true})}
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+$$('.rv,.imgrv').forEach(function(el){io.observe(el)});
+/* projects */
+var P=[
+{t:'The Ivory Residence',c:'Residential',d:'A serene family home in layered whites and oak.',i:'photo-1600585154340-be6161a56a0c',cl:'col-span-2 md:col-span-3 md:row-span-3',alt:'Bright residential living space with ivory walls and oak details',
+ b:'A concept for a four-bedroom family home that needs to feel calm, bright, and easy to live in every day.',a:'We open sightlines between rooms, soften transitions with arched thresholds, and let a single tonal palette carry the eye through the plan.',m:['Limewash plaster','Natural oak','Boucle upholstery','Honed travertine']},
+{t:'Cedar & Stone Kitchen',c:'Kitchen',d:'A working kitchen with cedar joinery and a stone island.',i:'photo-1556228453-efd6c1ff04f6',cl:'col-span-1 md:col-span-3 md:row-span-2',alt:'Modern kitchen with wooden cabinetry and a stone-topped island',
+ b:'A kitchen concept for a household that cooks daily and entertains often.',a:'Zones for prep, cooking, and serving are planned around a generous island, with concealed storage so the surfaces stay quiet.',m:['Aromatic cedar','Grey-veined stone','Brushed brass','Matte lacquer']},
+{t:'The Quiet Workspace',c:'Commercial',d:'A studio office designed for focus and calm collaboration.',i:'photo-1497366216548-37526070297c',cl:'col-span-1 md:col-span-2 md:row-span-2',alt:'Calm contemporary workspace with natural light and timber furniture',
+ b:'A workplace concept for a small creative team that needs both deep focus and relaxed meeting areas.',a:'Acoustic softness, daylight-led layouts, and tactile finishes give each work zone its own character without visual noise.',m:['Acoustic felt','Ash timber','Textured plaster','Woven wool']},
+{t:'Terracotta Lounge',c:'Living Space',d:'A warm, low-slung lounge in clay and olive tones.',i:'photo-1616486338812-3dadae4b4ace',cl:'col-span-1 md:col-span-2 md:row-span-2',alt:'Living room lounge with warm terracotta tones and soft seating',
+ b:'A lounge concept for evenings, conversation, and quiet reading.',a:'Deep seating, layered lighting at three heights, and earthy colour keep the room intimate and grounded.',m:['Terracotta plaster','Olive velvet','Walnut','Hand-knotted wool']},
+{t:'Linen & Oak Bedroom',c:'Bedroom',d:'A restful bedroom built from soft layers and pale oak.',i:'photo-1505693416388-ac5ce068fe85',cl:'col-span-1 md:col-span-2 md:row-span-3',alt:'Peaceful bedroom with linen bedding and oak furniture',
+ b:'A principal bedroom concept focused on rest, storage, and morning light.',a:'A low oak bed, washed linen, and filtered daylight create a quiet retreat, with storage built into the architecture.',m:['Washed linen','Pale oak','Lime plaster','Matte bronze']},
+{t:'The Gallery Hallway',c:'Entry & Styling',d:'An entry sequence staged as a quiet gallery of objects.',i:'photo-1618219908412-a29a1bb7b86e',cl:'col-span-2 md:col-span-2 md:row-span-2',alt:'Elegant entry hallway styled with art and sculptural objects',
+ b:'An entry concept that welcomes guests and displays a personal collection.',a:'Concealed storage clears the circulation path while niches, picture lighting, and a single bench make the space feel curated.',m:['Stone flooring','Plaster niches','Blackened steel','Framed art']}];
+var cats=['All','Residential','Commercial','Kitchen','Living Space','Bedroom','Entry & Styling'];
+var tabs=$('#tabs'),grid=$('#grid'),last=null;
+cats.forEach(function(c,i){var b=document.createElement('button');b.className='tab';b.textContent=c;b.type='button';b.setAttribute('aria-pressed',i===0);b.onclick=function(){filt(c)};tabs.appendChild(b)});
+P.forEach(function(p,n){var li=document.createElement('li');li.className='proj '+p.cl;li.dataset.cat=p.c;
+ li.innerHTML='<button type="button" class="relative block w-full h-full min-h-[220px] md:min-h-0 text-left overflow-hidden imgbg" aria-haspopup="dialog"><img src="'+U+p.i+'?auto=format&fit=crop&w=1000&q=80" alt="'+p.alt+'" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><span class="cap absolute inset-x-0 bottom-0 p-4 md:p-5 text-ivory"><span class="block text-xs font-semibold text-stone">'+p.c+'</span><span class="block serif text-2xl leading-tight">'+p.t+'</span><span class="block text-sm text-stone mt-1 hidden sm:block">'+p.d+'</span></span></button>';
+ li.firstChild.onclick=function(e){open(n,e.currentTarget)};grid.appendChild(li)});
+function filt(c){$$('.tab').forEach(function(b){b.setAttribute('aria-pressed',b.textContent===c)});var shown=0;
+ $$('.proj').forEach(function(el){var m=c==='All'||el.dataset.cat===c;if(m)shown++;
+  if(m){el.classList.remove('gone');requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.remove('out')})})}
+  else{el.classList.add('out');setTimeout(function(){if(el.classList.contains('out'))el.classList.add('gone')},reduce?0:400)}});
+ $('#count').textContent=shown+' project'+(shown===1?'':'s')+' shown'}
+/* modal */
+var md=$('#modal');
+function open(n,tr){var p=P[n];last=tr;$('#m-img').src=U+p.i+'?auto=format&fit=crop&w=1600&q=85';$('#m-img').alt=p.alt;$('#m-cat').textContent=p.c;$('#m-title').textContent=p.t;$('#m-brief').textContent=p.b;$('#m-app').textContent=p.a;
+ $('#m-mat').innerHTML=p.m.map(function(x){return'<span class="border hair px-3 py-1 text-sm bg-stone/50">'+x+'</span>'}).join('');
+ md.classList.add('open');md.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(function(){$('#mclose').focus()},50)}
+function close(){md.classList.remove('open');md.setAttribute('aria-hidden','true');document.body.style.overflow='';if(last)last.focus()}
+$('#mclose').onclick=close;md.addEventListener('click',function(e){if(e.target===md)close()});
+document.addEventListener('keydown',function(e){if(!md.classList.contains('open'))return;
+ if(e.key==='Escape')close();
+ if(e.key==='Tab'){var f=$$('button,[href]',md),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+/* stepper */
+var S=[['Discovery','We begin with a conversation about how you live, work, gather, and want the space to feel.','Site visit, a conversation about routines and preferences, and a clear written brief.'],
+['Concept & Blueprint','We develop spatial layouts, material directions, lighting concepts, and a clear visual direction.','Plans, mood and material boards, and a lighting concept for your review.'],
+['Execution','We coordinate detailing, sourcing direction, and implementation with clarity and care.','Detailed drawings, finish schedules, and regular coordination with makers and contractors.'],
+['Handover','We review the finished space, refine the final styling, and ensure every detail feels intentional.','A walkthrough, final styling, and care notes for materials and furniture.']];
+var st=$('#steps'),cur=0,btns=[];
+S.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.className='step relative text-left flex md:block gap-5 pb-8 md:pb-0 w-full';b.setAttribute('role','tab');b.id='tab'+i;b.setAttribute('aria-controls','panel');
+ b.innerHTML='<span class="num relative z-10 shrink-0 w-12 h-12 rounded-full border border-char/40 bg-ivory flex items-center justify-center serif text-xl">0'+(i+1)+'</span><span class="st block md:mt-6 md:pt-4 md:border-t-2 border-transparent flex-1 pt-2"><span class="serif text-2xl md:text-3xl block">'+s[0]+'</span></span>';
+ b.onclick=function(){go(i)};b.onkeydown=function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();go(Math.min(3,cur+1),1)}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();go(Math.max(0,cur-1),1)}};
+ st.appendChild(b);btns.push(b)});
+function go(i,f){cur=i;btns.forEach(function(b,k){b.setAttribute('aria-selected',k===i);b.tabIndex=k===i?0:-1});if(f)btns[i].focus();
+ var d=S[i],pn=$('#panel');pn.setAttribute('aria-labelledby','tab'+i);pn.className='';void pn.offsetWidth;pn.className='panel mt-10 md:mt-14 border-t hair pt-8 grid md:grid-cols-12 gap-6';
+ pn.innerHTML='<p class="md:col-span-1 serif text-5xl text-clayd">0'+(i+1)+'</p><h3 class="md:col-span-4 serif text-4xl">'+d[0]+'</h3><div class="md:col-span-7"><p class="text-lg leading-relaxed">'+d[1]+'</p><p class="mt-4 text-char/80 leading-relaxed">'+d[2]+'</p></div>';
+ var fl=$('#fill'),pct=i/3*100,desk=matchMedia('(min-width:768px)').matches;
+ if(desk){fl.style.height='1px';fl.style.width=(i===3?100:i/3*100+0)+'%'}else{fl.style.width='1px';var h=btns[i].offsetTop+24;fl.style.height=h+'px'}}
+go(0);addEventListener('resize',function(){go(cur)});
+/* form */
+var form=$('#form'),sv=$('#service');
+sv.onchange=function(){sv.classList.toggle('has',!!sv.value)};
+function chk(el){var ok=el.value.trim()!=='';el.closest('.fld').classList.toggle('bad',!ok);el.setAttribute('aria-invalid',!ok);return ok}
+['name','service','brief'].forEach(function(id){var el=$('#'+id);el.addEventListener('blur',function(){chk(el)});el.addEventListener('input',function(){if(el.closest('.fld').classList.contains('bad'))chk(el)})});
+form.addEventListener('submit',function(e){e.preventDefault();var ids=['name','service','brief'],bad=null;
+ ids.forEach(function(id){var el=$('#'+id);if(!chk(el)&&!bad)bad=el});
+ if(bad){bad.focus();$('#ok').classList.add('hidden');return}
+ var msg='Hello Payal Jain,\n\nName: '+$('#name').value.trim()+'\nService: '+sv.value+'\nProject brief: '+$('#brief').value.trim();
+ var url='https://wa.me/919999999999?text='+encodeURIComponent(msg);
+ var ok=$('#ok');ok.classList.remove('hidden');ok.focus();window.open(url,'_blank','noopener')});
+})();
+</script>
+</body>
+</html>
